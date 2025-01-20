@@ -1,7 +1,6 @@
 package usecase
 
 import (
-	"encoding/json"
 	"fmt"
 	"github.com/silmarsanches/clientserverapi/client/config"
 	"github.com/silmarsanches/clientserverapi/client/internal/infra/services"
@@ -31,15 +30,13 @@ func (d *GetDolarExchangeRateUseCase) GetDolarExchangeRate() (float64, error) {
 		return 0, err
 	}
 
-	var exchangeRate DolarExchangeRate
-	jsonData, err := json.Marshal(data)
-	if err != nil {
-		return 0, err
+	bid, ok := data["bid"].(float64)
+	if !ok {
+		return 0, fmt.Errorf("erro ao converter o campo 'bid'")
 	}
 
-	err = json.Unmarshal(jsonData, &exchangeRate)
-	if err != nil {
-		return 0, err
+	exchangeRate := DolarExchangeRate{
+		Bid: bid,
 	}
 
 	err = appendToFile(exchangeRate.Bid)
