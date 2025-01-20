@@ -3,8 +3,8 @@ package usecase
 import (
 	"encoding/json"
 	"fmt"
+	"github.com/silmarsanches/clientserverapi/client/config"
 	"github.com/silmarsanches/clientserverapi/client/internal/infra/services"
-	"github.com/silmarsanches/clientserverapi/server/config"
 	"log"
 	"os"
 )

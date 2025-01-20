@@ -3,7 +3,7 @@ package services
 import (
 	"encoding/json"
 	"errors"
-	"github.com/silmarsanches/clientserverapi/server/config"
+	"github.com/silmarsanches/clientserverapi/client/config"
 	"io"
 	"log"
 	"net/http"
@@ -26,7 +26,7 @@ func NewHttpExternalServiceDolar(appConfig *config.Config) *HttpExternalServiceD
 }
 
 func (s *HttpExternalServiceDolar) GetDolarExchangeRate() (map[string]interface{}, error) {
-	req, err := http.NewRequest(http.MethodGet, s.appConfig.URLDolar, nil)
+	req, err := http.NewRequest(http.MethodGet, s.appConfig.UrlApi, nil)
 	if err != nil {
 		return nil, err
 	}
