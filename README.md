@@ -2,7 +2,6 @@
 
 Projeto de conclusão de pós-graduação (Desafio 1) 
 Este projeto implementa uma API (servidor) que realiza a consulta da cotação do dolar em um serviço externo.
-O projeto
 
 ## Índice
 
