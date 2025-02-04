@@ -4,6 +4,7 @@ import (
 	"database/sql"
 	"log"
 	"net/http"
+	"os"
 
 	_ "github.com/mattn/go-sqlite3"
 	"github.com/silmarsanches/clientserverapi/server/config"
@@ -14,7 +15,13 @@ import (
 )
 
 func main() {
-	appConfig, err := config.LoadConfig("./server/cmd")
+	workingDir, err := os.Getwd()
+    if err != nil {
+        log.Fatalf("Erro ao obter o diretório de trabalho atual: %v", err)
+    }
+    log.Printf("Diretório de trabalho atual: %s", workingDir)
+
+	appConfig, err := config.LoadConfig(workingDir)
 	if err != nil {
 		log.Fatalf("Erro ao carregar o arquivo de configuração: %v", err)
 	}
